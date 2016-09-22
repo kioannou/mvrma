@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieRama - Information about movies</title>
+
+    <!--Adding styleSheets-->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/styles.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!--Title-->
+    <h3>MovieRama</h3>
+
+    <!--Search-->
+    <div id="search">
+        <input class="form-control" id="search-input" placeholder="Search for a movie..."/>
+        <button class="btn btn-primary" type="button" id="search-button">Search</button>
+    </div>
+
+    <!--Results information-->
+    <div id="results-information">
+    </div>
+
+    <!--Movies section-->
+    <div id="movies-list">
+    </div>
+
+    <!--Load more items button-->
+    <div id="notification"></div>
+
+    <!--Inserting scripts-->
+    <script src="dist/bundle.js" type="text/javascript" rel="script"></script>
+</div>
+<div class="modal"></div>
+</body>
+</html>

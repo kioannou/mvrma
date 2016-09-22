@@ -1,0 +1,126 @@
+.container{
+    min-width: 900px !important;
+}
+
+.col-sm-8, .col-sm-4 {
+    padding-left: 0 !important;
+}
+
+/*Search section of the page*/
+#search{
+    padding: 15px 15px 15px 0;
+}
+
+#search-input{
+    max-width: 70% !important;
+    display: inline-block;
+}
+
+#search-button{
+    margin-left: 20px;
+}
+
+/*div element that indicates the results*/
+#results-information{
+    padding: 5px 5px 5px 0;
+    color: gray;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*Movie item card in movies list*/
+.movies-item{
+    padding: 10px;
+    width: inherit;
+    height: inherit;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 1px 2px 3px 0 rgba(0,0,0,.10);
+    min-width: 900px !important;
+}
+
+/*Class for message when a movie property info is unavailable*/
+.unavailable{
+    color: lightgrey;
+    font-style: italic;
+}
+
+
+/*The main part of movie-item*/
+.media{
+    float: left;
+}
+
+/*Reviews section*/
+.reviews{
+    padding: 5px;
+    float: right;
+}
+
+.reviews-title{
+    text-align: center;
+}
+
+.review-item{
+    padding: 10px;
+}
+
+.review-info{
+    color: cadetblue;
+    font-style: italic;
+}
+
+.no-reviews-notification{
+    font-size: medium;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+/*Similar movies section*/
+.similar-movies{
+    padding: 5px 5px 5px 0;
+}
+
+/*Loading more indicator*/
+#notification{
+    margin-top: 30px;
+    padding: 30px 30px 30px 0;
+    text-align: center;
+    font-size: 50px;
+    color: lightgrey;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+    url('../images/ajax-loader.gif')
+    50% 50%
+    no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}

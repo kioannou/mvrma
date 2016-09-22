@@ -1,0 +1,24 @@
+{
+  "name": "movierama",
+  "version": "0.0.1",
+  "description": "Movies for the masses.",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "debug": "^2.2.0",
+    "browserify": "latest",
+    "mocha": "latest",
+    "chai": "latest"
+  },
+  "scripts": {
+    "test": "mocha -t 20000 tests/*.js",
+    "build-dev": "browserify resources/js/app.js -o dist/bundle.js --debug",
+    "build": "browserify resources/js/app.js -o dist/bundle.js"
+  },
+  "author": "Kostas Ioannou <konsioannou@gmail.com>",
+  "license": "ISC"
+}
