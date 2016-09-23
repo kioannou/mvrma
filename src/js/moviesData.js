@@ -1,5 +1,7 @@
 /**
- * This file contains all the functions regarding
+ * @module {Module} src/js/moviesData.js
+ *
+ * This module contains all the ajax requests of the application
  */
 
 "use strict";
@@ -7,20 +9,22 @@
 var $ = require("jquery");
 var MoviesView = require("./moviesView.js");
 var Debug = require("debug");
-//Define the app.js logger
 var debug = Debug("moviesData");
 Debug.enable('*');
 
 /**
+ * Request for getting the in-theater movies
  *
- * @param apiKey
- * @param pageLimit
- * @param page
- * @param callback
+ * @function getInTheaterMovies
+ *
+ * @param {string} apiKey - RT's API key, required for the requests
+ * @param pageLimit {number} - Number of movies that will be returned
+ * @param page {number} Number of page
+ * @param callback {function(): {}} - The callback function returns an object
  */
 exports.getInTheaterMovies = function (apiKey, pageLimit, page, callback) {
 
-    //Loading
+    //Show loading
     MoviesView.loading.show();
 
     debug("Requesting for movies in theater");
@@ -33,7 +37,7 @@ exports.getInTheaterMovies = function (apiKey, pageLimit, page, callback) {
 
             debug("Success on getting the movies in theater");
 
-            //Loading
+            //Hide loading
             MoviesView.loading.hide();
 
             //Formatting the response in a template that is useful for me
@@ -52,7 +56,7 @@ exports.getInTheaterMovies = function (apiKey, pageLimit, page, callback) {
 
             debug("Error on getting the movies in theater");
 
-            //Loading
+            //Hide loading
             MoviesView.loading.hide();
 
             return callback({
@@ -68,20 +72,20 @@ exports.getInTheaterMovies = function (apiKey, pageLimit, page, callback) {
 };
 
 
-
 /**
+ * Request for searching a movie
  *
- * @param apiKey
- * @param stringForSearch
- * @param pageLimit
- * @param page
- * @param callback
+ * @param {string} apiKey - RT's API key, required for the requests
+ * @param {string} stringForSearch - User's input for search
+ * @param pageLimit {number} - Number of movies that will be returned
+ * @param page {number} Number of page
+ * @param callback {function(): {}} - The callback function returns an object
  */
 exports.searchForMovie = function (apiKey, stringForSearch, pageLimit, page, callback) {
 
     debug("Requesting search for %s", stringForSearch);
 
-    //Loading
+    //Show loading
     MoviesView.loading.show();
 
     $.ajax({
@@ -93,7 +97,7 @@ exports.searchForMovie = function (apiKey, stringForSearch, pageLimit, page, cal
             debug("Success on search request for %s", stringForSearch);
             debug("Response", response);
 
-            //Loading
+            //Hiding loading
             MoviesView.loading.hide();
 
             //Formatting the response in a template that is useful for me
@@ -112,7 +116,7 @@ exports.searchForMovie = function (apiKey, stringForSearch, pageLimit, page, cal
 
             debug("Error on search request for %s", stringForSearch);
 
-            //Loading
+            //Hide loading
             MoviesView.loading.hide();
 
             return callback({
@@ -125,13 +129,14 @@ exports.searchForMovie = function (apiKey, stringForSearch, pageLimit, page, cal
             });
         }
     });
-
 };
 
+
 /**
+ * Getting movie details for the selected movie
  *
- * @param apiKey
- * @param id
+ * @param {string} apiKey - RT's API key, required for the requests
+ * @param {string} id - The id of the movie we are getting details
  * @returns {*}
  */
 exports.getMovieDetails = function (apiKey, id) {
@@ -146,9 +151,10 @@ exports.getMovieDetails = function (apiKey, id) {
 };
 
 /**
+ * Getting reviews for the selected movie
  *
- * @param apiKey
- * @param id
+ * @param {string} apiKey - RT's API key, required for the requests
+ * @param id - The id of the movie we are getting details
  * @param pageLimit
  * @returns {*}
  */
@@ -164,9 +170,10 @@ exports.getMovieReviews = function (apiKey, id, pageLimit) {
 };
 
 /**
+ * Getting similar movies for the selected movie
  *
- * @param apiKey
- * @param id
+ * @param {string} apiKey - RT's API key, required for the requests
+ * @param id - The id of the movie we are getting details
  * @param pageLimit
  * @returns {*}
  */
@@ -180,6 +187,4 @@ exports.getSimilarMovies = function (apiKey, id, pageLimit) {
         dataType: 'jsonp'
     });
 };
-
-
 

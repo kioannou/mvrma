@@ -1,3 +1,5 @@
+body { padding-top: 70px; }
+
 .container{
     min-width: 900px !important;
 }
@@ -12,7 +14,6 @@
 }
 
 #search-input{
-    max-width: 70% !important;
     display: inline-block;
 }
 

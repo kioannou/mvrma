@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieRama - Information about movies</title>
+
+    <!--Adding styleSheets-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <!--Title-->
+            <a class="navbar-brand" href="#">MovieRama</a>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input class="form-control" id="search-input" placeholder="Search for a movie..."/>
+                </div>
+                <button class="btn btn-primary" type="button" id="search-button">Search</button>
+            </form>
+            <p class="navbar-text" id="results-information"></p>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <!--Movies section-->
+    <div id="movies-list">
+    </div>
+
+    <!--Load more items button-->
+    <div id="notification"></div>
+
+    <!--Inserting scripts-->
+    <script src="js/bundle.min.js" type="text/javascript" rel="script"></script>
+    <script src="//localhost:3001"></script>
+</div>
+<div class="modal"></div>
+</body>
+</html>

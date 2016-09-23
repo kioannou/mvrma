@@ -1,3 +1,9 @@
+/**
+ * @module {Module} src/js/moviesView.js
+ *
+ * This module contains and exports all the DOM manipulation functions
+ */
+
 "use strict";
 
 var $ = require("jquery");
@@ -12,6 +18,7 @@ var $moviesList = $('#movies-list');
 var $resultsInformation = $('#results-information');
 var $notification = $('#notification');
 var $body = $("body");
+var $searchInput = $('#search-input');
 
 /**
  * Function that accepts an object which is the response from
@@ -78,7 +85,8 @@ exports.addMoviesToList = function (response, callback) {
 };
 
 /**
- *
+ * Function for empty the movie's list
+ * @name emptyList
  */
 exports.emptyList = function () {
     $moviesList.empty();
@@ -86,9 +94,12 @@ exports.emptyList = function () {
 
 
 /**
+ * Function that adds the selected movie's additional information, similar movies,
+ * movie's reviews elements
  *
- * @param id
- * @param data
+ * @name showMovieDetails
+ * @param id {number}
+ * @param data {object}
  */
 exports.showMovieDetails = function (id, data) {
 
@@ -165,8 +176,11 @@ exports.showMovieDetails = function (id, data) {
 };
 
 /**
+ * Function that hides the selected movie's additional information, similar movies,
+ * movie's reviews elements
  *
- * @param id
+ * @name hideMovieDetails
+ * @param id {number} Selected movie's id
  */
 exports.hideMovieDetails = function (id) {
 
@@ -178,7 +192,7 @@ exports.hideMovieDetails = function (id) {
     //Changing background color
     $selectedMovieElement.css("background-color", "white");
 
-    //removing movie genres
+    //Removing movie genres
     $("#" + id + ' .genres').text("");
 
     //Removing directors
@@ -197,22 +211,29 @@ exports.hideMovieDetails = function (id) {
 
 
 /**
+ * Function that updates the '#results-information' element
  *
- * @param resultsString
+ * @name updateResultsInformation
+ * @param resultsString {string} String to update the '#results-information' element
  */
 exports.updateResultsInformation = function (resultsString) {
     $resultsInformation.text(resultsString);
 };
 
 /**
+ * Function that updates the '#notification' element
  *
- * @param message
+ * @name updateNotification
+ * @param message {string} String to update the '#notification' element
  */
 exports.updateNotification = function(message){
         $notification.text(message);
 };
 
 /**
+ * Functions that control the loading visual effect.
+ * loading.show: Shows loading
+ * loading.hide: Hides loading
  *
  * @type {{show: exports.loading.show, hide: exports.loading.hide}}
  */
@@ -225,5 +246,17 @@ exports.loading = {
     }
 };
 
+/**
+ * Function that disables/enables the '#search-input' element.
+ * When the user types a string in '#search-input'
+ * an ajax request takes place returning the search results for the string
+ * While there is an ongoing ajax request,
+ * user should not be able to type something until request finishes
+ *
+ * @param choice {boolean}
+ */
+exports.disableSearchInput = function (choice) {
+    $searchInput.prop('readonly', choice);
+};
 
 

@@ -2,22 +2,26 @@
   "name": "movierama",
   "version": "0.0.1",
   "description": "Movies for the masses.",
-  "main": "index.js",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
     "jquery": "^3.1.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "browserify": "^13.1.0",
     "debug": "^2.2.0",
-    "browserify": "latest",
-    "mocha": "latest",
-    "chai": "latest"
+    "uglify-js": "^2.7.3",
+    "watch": "^0.19.2"
   },
   "scripts": {
-    "test": "mocha -t 20000 tests/*.js",
-    "build-dev": "browserify resources/js/app.js -o dist/bundle.js --debug",
-    "build": "browserify resources/js/app.js -o dist/bundle.js"
+    "build:js": "browserify src/js/main.js > dist/bundle.js",
+    "minify:js": "uglifyjs ./dist/bundle.js -o ./public/js/bundle.min.js",
+    "build": "npm run build:js && npm run minify:js",
+    "watch": "watch 'npm run build:js' src/js/",
+    "serve": "node server.js",
+    "livereload": "live-reload --port 3001 public/",
+    "build:dev": "node server.js && npm run watch && npm run livereload"
   },
   "author": "Kostas Ioannou <konsioannou@gmail.com>",
   "license": "ISC"
