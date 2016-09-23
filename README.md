@@ -1,5 +1,6 @@
 # Front-end assignment
-A jQuery web application for movie buffs
+A jQuery web application for movie buffs.
+I tried to keep it simple
 
 ##Setup
 
